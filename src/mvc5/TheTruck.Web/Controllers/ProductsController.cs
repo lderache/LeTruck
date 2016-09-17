@@ -7,7 +7,7 @@ using TheTruck.Web.DataContexts;
 
 namespace TheTruck.Web.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class ProductsController : Controller
     {
         private ProductDb db = new ProductDb();
