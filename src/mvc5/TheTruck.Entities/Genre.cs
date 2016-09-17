@@ -2,9 +2,12 @@
 {
     public enum Genre
     {
-        Cheese,
-        Wine,
-        Bread,
-        Package
+        Beverage,
+        Confectionary,
+        Dairy,
+        Gourmet,
+        Grocery,
+        NonFood,
+        Pastry
     }
 }

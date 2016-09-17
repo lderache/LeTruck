@@ -214,6 +214,18 @@
     <Compile Include="DataContexts\ProductMigrations\201609161426409_addDiscount.Designer.cs">
       <DependentUpon>201609161426409_addDiscount.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataContexts\ProductMigrations\201609171448092_updateCategories.cs" />
+    <Compile Include="DataContexts\ProductMigrations\201609171448092_updateCategories.Designer.cs">
+      <DependentUpon>201609171448092_updateCategories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataContexts\ProductMigrations\201609171529062_AddImage.cs" />
+    <Compile Include="DataContexts\ProductMigrations\201609171529062_AddImage.Designer.cs">
+      <DependentUpon>201609171529062_AddImage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataContexts\ProductMigrations\201609171536420_ImageNonRequired.cs" />
+    <Compile Include="DataContexts\ProductMigrations\201609171536420_ImageNonRequired.Designer.cs">
+      <DependentUpon>201609171536420_ImageNonRequired.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataContexts\ProductMigrations\Configuration.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -317,6 +329,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DataContexts\ProductMigrations\201609161426409_addDiscount.resx">
       <DependentUpon>201609161426409_addDiscount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataContexts\ProductMigrations\201609171448092_updateCategories.resx">
+      <DependentUpon>201609171448092_updateCategories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataContexts\ProductMigrations\201609171529062_AddImage.resx">
+      <DependentUpon>201609171529062_AddImage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataContexts\ProductMigrations\201609171536420_ImageNonRequired.resx">
+      <DependentUpon>201609171536420_ImageNonRequired.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

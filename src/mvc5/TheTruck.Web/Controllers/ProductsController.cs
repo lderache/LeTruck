@@ -1,4 +1,6 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
@@ -7,7 +9,6 @@ using TheTruck.Web.DataContexts;
 
 namespace TheTruck.Web.Controllers
 {
-    //[Authorize]
     public class ProductsController : Controller
     {
         private ProductDb db = new ProductDb();
@@ -30,7 +31,6 @@ namespace TheTruck.Web.Controllers
             {
                 return HttpNotFound();
             }
-
             return View(product);
         }
 
@@ -45,10 +45,19 @@ namespace TheTruck.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Category,Name,Price,Description,Discount")] Product product)
+        public ActionResult Create([Bind(Include = "Id,Category,Name,Price,Description")] Product product)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && Request.Files.Count > 0)
             {
+                var file = Request.Files[0];
+                if (file != null && file.ContentLength > 0)
+                {
+                    var uploadPath = "~/images/";
+                    var filename = Guid.NewGuid() + Path.GetExtension(file.FileName);
+                    var path = Path.Combine(Server.MapPath(uploadPath), filename);
+                    file.SaveAs(path);
+                    product.Image = "/images/" + filename;
+                }
                 db.Products.Add(product);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -77,10 +86,23 @@ namespace TheTruck.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Category,Name,Price,Description,Discount")] Product product)
+        public ActionResult Edit([Bind(Include = "Id,Category,Name,Price,Description")] Product product)
         {
             if (ModelState.IsValid)
             {
+                if (Request.Files.Count > 0)
+                {
+                    var file = Request.Files[0];
+                    if (file != null && file.ContentLength > 0)
+                    {
+                        var uploadPath = "~/images/";
+                        var filename = Guid.NewGuid() + Path.GetExtension(file.FileName);
+                        var path = Path.Combine(Server.MapPath(uploadPath), filename);
+                        file.SaveAs(path);
+                        product.Image = "/images/" + filename;
+                    }
+                }
+
                 db.Entry(product).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
