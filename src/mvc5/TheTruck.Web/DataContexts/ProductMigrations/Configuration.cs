@@ -21,6 +21,12 @@ namespace TheTruck.Web.DataContexts.ProductMigrations
                 new Product { Category = Genre.Gourmet, Name = "Camembert", Price = 55, Description = "Le camembert coeur de lion!" }
             };
 
+            // Todo seed more products here
+            for (int i = 0; i < 100; i++)
+            {
+
+            }
+
             products.ForEach(p => context.Products.AddOrUpdate(x => x.Name, p));
 
             context.SaveChanges();

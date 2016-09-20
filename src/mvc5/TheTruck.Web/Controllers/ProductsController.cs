@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.IO;
 using System.Linq;
@@ -35,6 +36,28 @@ namespace TheTruck.Web.Controllers
                 return HttpNotFound();
             }
             return View(product);
+        }
+
+        // GET: Products/AddToCart/5
+        public ActionResult AddToCart(string foo)
+        {
+            var products = Session["products"] as List<int>;
+
+            if (products == null)
+                products = new List<int>();
+
+            // store new product
+            products.Add(int.Parse(foo));
+
+            // Store in the session
+            Session["products"] = products;
+
+            if (Request.IsAjaxRequest())
+            {
+                return Content(foo);
+            }
+
+            return View();
         }
 
         // GET: Products/Create
