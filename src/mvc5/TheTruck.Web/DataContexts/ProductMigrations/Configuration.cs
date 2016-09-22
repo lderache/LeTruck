@@ -14,18 +14,25 @@ namespace TheTruck.Web.DataContexts.ProductMigrations
 
         protected override void Seed(TheTruck.Web.DataContexts.ProductDb context)
         {
-
-            var products = new List<Product>
+            var beverages = new List<Product>
             {
-                new Product { Category = Genre.Confectionary, Name = "Baguette", Price = 15.6m, Description = "La baguette Baguepi!" },
-                new Product { Category = Genre.Gourmet, Name = "Camembert", Price = 55, Description = "Le camembert coeur de lion!" }
+                new Product { Category =  Genre.Beverage, Name = "Mango Juice", Price = 30m, Image = "/images/mango-juice.png"  },
+                new Product { Category =  Genre.Beverage, Name = "Apple Juice", Price = 30m, Image = "/images/apple-juice.png"  },
+                new Product { Category =  Genre.Beverage, Name = "Peach Juice", Price = 30m, Image = "/images/peach-juice.png"  },
+                new Product { Category =  Genre.Beverage, Name = "Orange Juice", Price = 30m, Image = "/images/orange-juice.png" },
             };
 
-            // Todo seed more products here
-            for (int i = 0; i < 100; i++)
+            var dairy = new List<Product>
             {
+                new Product { Category = Genre.Dairy, Name = "Brie Milkana", Price = 60m, Image = "/images/brie-milkana.png"  },
+                new Product { Category = Genre.Dairy, Name = "Brie Fermier", Price = 60m, Image = "/images/brie-fermier.png"  },
+                new Product { Category = Genre.Dairy, Name = "Coeur de Lion", Price = 60m, Image = "/images/coeur-de-lion.png" },
+                new Product { Category = Genre.Dairy, Name = "Le Camembert", Price = 60m, Image = "/images/camembert.png"  },
+            };
 
-            }
+            var products = new List<Product>();
+            products.AddRange(beverages);
+            products.AddRange(dairy);
 
             products.ForEach(p => context.Products.AddOrUpdate(x => x.Name, p));
 
