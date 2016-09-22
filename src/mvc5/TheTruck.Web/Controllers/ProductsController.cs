@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.IO;
 using System.Linq;
@@ -9,6 +8,7 @@ using System.Web.Hosting;
 using System.Web.Mvc;
 using TheTruck.Entities;
 using TheTruck.Web.DataContexts;
+using TheTruck.Web.Services;
 
 namespace TheTruck.Web.Controllers
 {
@@ -16,6 +16,12 @@ namespace TheTruck.Web.Controllers
     {
         private ProductDb db = new ProductDb();
         private string ImagePath = "/images/";
+        private CartService cartService;
+
+        public ProductsController()
+        {
+            cartService = new CartService(System.Web.HttpContext.Current.Session);
+        }
 
         // GET: Products
         public ActionResult Index()
@@ -39,25 +45,10 @@ namespace TheTruck.Web.Controllers
         }
 
         // GET: Products/AddToCart/5
-        public ActionResult AddToCart(string foo)
+        public JsonResult AddToCart(int id)
         {
-            var products = Session["products"] as List<int>;
-
-            if (products == null)
-                products = new List<int>();
-
-            // store new product
-            products.Add(int.Parse(foo));
-
-            // Store in the session
-            Session["products"] = products;
-
-            if (Request.IsAjaxRequest())
-            {
-                return Content(foo);
-            }
-
-            return View();
+            cartService.AddProduct(id);
+            return Json(cartService.GetProducts().Count, JsonRequestBehavior.AllowGet);
         }
 
         // GET: Products/Create
