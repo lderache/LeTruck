@@ -11,6 +11,7 @@ using TheTruck.Web.DataContexts;
 
 namespace TheTruck.Web.Controllers
 {
+    [Authorize(Roles = "admin")]
     public class ProductsController : Controller
     {
         private ProductDb db = new ProductDb();
