@@ -43,9 +43,25 @@
 
                 </td>
                 <td class="addToCart">
-                    @Html.ActionLink("Truck me that!", "AddToCart", new { id = item.Id })
+                    @Ajax.ActionLink("Truck me that!", "AddToCart", null, new { id = item.Id },
+                      new AjaxOptions
+                      {
+                          HttpMethod = "Get",
+                          OnSuccess = "showAddCartOk"
+                      })
+                    <span class="glyphicon glyphicon-ok" style="display: none" id='@("product-id-" + item.Id)'></span>
                 </td>
             </tr>
         }
     </tbody>
 </table>
+
+@section Scripts {
+    <script type="text/javascript">
+
+        var showAddCartOk = function (cartTotal) {
+            console.log("success: " + cartTotal);
+            $('#cart-count').text(cartTotal + " - Items");
+        }
+    </script>
+}

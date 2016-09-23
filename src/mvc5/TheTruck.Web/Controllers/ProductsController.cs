@@ -8,7 +8,6 @@ using System.Web.Hosting;
 using System.Web.Mvc;
 using TheTruck.Entities;
 using TheTruck.Web.DataContexts;
-using TheTruck.Web.Services;
 
 namespace TheTruck.Web.Controllers
 {
@@ -16,11 +15,9 @@ namespace TheTruck.Web.Controllers
     {
         private ProductDb db = new ProductDb();
         private string ImagePath = "/images/";
-        private CartService cartService;
 
         public ProductsController()
         {
-            cartService = new CartService(System.Web.HttpContext.Current.Session);
         }
 
         // GET: Products
@@ -44,12 +41,6 @@ namespace TheTruck.Web.Controllers
             return View(product);
         }
 
-        // GET: Products/AddToCart/5
-        public JsonResult AddToCart(int id)
-        {
-            cartService.AddProduct(id);
-            return Json(cartService.GetProducts().Count, JsonRequestBehavior.AllowGet);
-        }
 
         // GET: Products/Create
         public ActionResult Create()
