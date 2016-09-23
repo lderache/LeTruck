@@ -34,30 +34,6 @@ namespace TheTruck.Web.DataContexts.IdentityMigrations
                 // Add the role to admin user
                 userManager.AddToRole(user.Id, role.Name);
             }
-
-            /*
-            var hasher = new PasswordHasher();
-
-            context.Users.AddOrUpdate(u => u.UserName,
-                new ApplicationUser { UserName = "laurent.derache@gmail.com", Email = "laurent.derache@gmail.com", PasswordHash = hasher.HashPassword("rHk6eGMX;") },
-                new ApplicationUser { UserName = "lderache@hotmail.com", Email = "lderache@hotmail.com", PasswordHash = hasher.HashPassword("rHk6eGMX!") }
-                );
-
-            context.SaveChanges();
-            */
-
-            //  This method will be called after migrating to the latest version.
-
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
         }
     }
 }
