@@ -7,6 +7,10 @@
 }
 
 <ul class="nav navbar-nav">
-    <li><a class="btn" href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart <span id="cart-count" class="badge"> @products.Count</span></a>
+    <li>
+        <a class="btn" href='@Url.Action("ShowCart","Cart")'>
+            <span class="glyphicon glyphicon-shopping-cart"></span>
+            Cart <span id="cart-count" class="badge"> @products.Count</span>
+        </a>
     </li>
 </ul>
