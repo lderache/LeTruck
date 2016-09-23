@@ -36,11 +36,10 @@
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - Le Truck</p>
-            <ul>
-                <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                <li>@Html.ActionLink("About", "About", "Home")</li>
-                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-            </ul>
+            <span>@Html.ActionLink("Home", "Index", "Home") | </span>
+            <span>@Html.ActionLink("About", "About", "Home") | </span>
+            <span>@Html.ActionLink("Contact", "Contact", "Home")  </span>
+            
         </footer>
     </div>
 
