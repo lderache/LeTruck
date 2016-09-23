@@ -19,11 +19,20 @@ namespace TheTruck.Web.DataContexts.IdentityMigrations
 
             if (!context.Users.Any(u => u.UserName == "laurent.derache@gmail.com"))
             {
-                var store = new UserStore<ApplicationUser>(context);
-                var manager = new UserManager<ApplicationUser>(store);
+                // Roles
+                var roleStore = new RoleStore<IdentityRole>(context);
+                var roleManager = new RoleManager<IdentityRole>(roleStore);
+                var role = new IdentityRole { Name = "admin" };
+                roleManager.Create(role);
 
-                manager.Create(
-                    new ApplicationUser { UserName = "laurent.derache@gmail.com" }, "password");
+                // Admin user
+                var userStore = new UserStore<ApplicationUser>(context);
+                var userManager = new UserManager<ApplicationUser>(userStore);
+                var user = new ApplicationUser { UserName = "laurent.derache@gmail.com" };
+                userManager.Create(user, "password");
+
+                // Add the role to admin user
+                userManager.AddToRole(user.Id, role.Name);
             }
 
             /*

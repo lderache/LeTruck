@@ -198,6 +198,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ProductListingController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="DataContexts\IdentityDb.cs" />
     <Compile Include="DataContexts\IdentityMigrations\201609161418192_InitialCreate.cs" />
@@ -305,6 +306,11 @@
     <Content Include="Views\Products\Edit.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\Shared\_CartPartial.cshtml" />
+    <Content Include="Views\ProductListing\Create.cshtml" />
+    <Content Include="Views\ProductListing\Delete.cshtml" />
+    <Content Include="Views\ProductListing\Details.cshtml" />
+    <Content Include="Views\ProductListing\Edit.cshtml" />
+    <Content Include="Views\ProductListing\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

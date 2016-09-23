@@ -22,10 +22,9 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Products", "Index", "Products")</li>
+                    <li>@Html.ActionLink("Listings", "Index", "ProductListing")</li>
+                    @if (ViewContext.HttpContext.User.IsInRole("admin"))
+                    { <li>@Html.ActionLink("Manage", "Index", "Products")</li> }
                 </ul>
                 @Html.Partial("_CartPartial")
                 @Html.Partial("_LoginPartial")
@@ -37,6 +36,11 @@
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - Le Truck</p>
+            <ul>
+                <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                <li>@Html.ActionLink("About", "About", "Home")</li>
+                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+            </ul>
         </footer>
     </div>
 
