@@ -306,10 +306,7 @@
     <Content Include="Views\Products\Edit.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\Shared\_CartPartial.cshtml" />
-    <Content Include="Views\ProductListing\Create.cshtml" />
-    <Content Include="Views\ProductListing\Delete.cshtml" />
     <Content Include="Views\ProductListing\Details.cshtml" />
-    <Content Include="Views\ProductListing\Edit.cshtml" />
     <Content Include="Views\ProductListing\Index.cshtml" />
     <Content Include="Views\Shared\_ManagePartial.cshtml" />
   </ItemGroup>
