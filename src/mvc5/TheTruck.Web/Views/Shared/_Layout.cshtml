@@ -19,14 +19,13 @@
                     <span class="icon-bar"></span>
                 </button>
                 @Html.ActionLink("Le Truck", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.Partial("_CartPartial")
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Listings", "Index", "ProductListing")</li>
-                    @if (ViewContext.HttpContext.User.IsInRole("admin"))
-                    { <li>@Html.ActionLink("Manage", "Index", "Products")</li> }
+                    <li>@Html.Partial("_ManagePartial")</li>
                 </ul>
-                @Html.Partial("_CartPartial")
                 @Html.Partial("_LoginPartial")
             </div>
         </div>

@@ -311,6 +311,7 @@
     <Content Include="Views\ProductListing\Details.cshtml" />
     <Content Include="Views\ProductListing\Edit.cshtml" />
     <Content Include="Views\ProductListing\Index.cshtml" />
+    <Content Include="Views\Shared\_ManagePartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
