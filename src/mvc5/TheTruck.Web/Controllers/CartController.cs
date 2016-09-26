@@ -93,6 +93,8 @@ namespace TheTruck.Web.Controllers
                     ProductId = p.Id,
                     Quantity = quantities[p.Id],
                     UnitPrice = p.Price,
+                    Name = p.Name,
+                    Image = p.Image
                 });
             }
 

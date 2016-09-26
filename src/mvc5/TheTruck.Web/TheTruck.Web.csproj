@@ -237,6 +237,10 @@
     <Compile Include="DataContexts\ProductMigrations\201609260716550_LinkOrderToUsername.Designer.cs">
       <DependentUpon>201609260716550_LinkOrderToUsername.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataContexts\ProductMigrations\201609260758194_AddProductNameAndImage.cs" />
+    <Compile Include="DataContexts\ProductMigrations\201609260758194_AddProductNameAndImage.Designer.cs">
+      <DependentUpon>201609260758194_AddProductNameAndImage.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataContexts\ProductMigrations\Configuration.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -245,6 +249,7 @@
     <Compile Include="Models\CartViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\OrderDetailViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\CartService.cs" />
     <Compile Include="Startup.cs" />
@@ -370,6 +375,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DataContexts\ProductMigrations\201609260716550_LinkOrderToUsername.resx">
       <DependentUpon>201609260716550_LinkOrderToUsername.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataContexts\ProductMigrations\201609260758194_AddProductNameAndImage.resx">
+      <DependentUpon>201609260758194_AddProductNameAndImage.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

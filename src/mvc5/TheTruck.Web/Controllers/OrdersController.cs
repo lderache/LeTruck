@@ -11,6 +11,7 @@ using TheTruck.Web.DataContexts;
 
 namespace TheTruck.Web.Controllers
 {
+    [Authorize(Roles = "admin")]
     public class OrdersController : Controller
     {
         private ProductDb db = new ProductDb();
@@ -29,6 +30,7 @@ namespace TheTruck.Web.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Order order = db.Orders.Find(id);
+            order.Items = db.OrderItems.Where(x => x.OrderId == id).ToList();
             if (order == null)
             {
                 return HttpNotFound();
