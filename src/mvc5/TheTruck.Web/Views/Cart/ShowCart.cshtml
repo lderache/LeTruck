@@ -39,7 +39,9 @@
             <img src="@item.Image" height="100"/>
         </td>
         <td>
+            @Html.ActionLink("-", "RmFromCart", null, new { id = item.Id }, new { @class = "btn btn-danger btn-xs"})
             @Html.DisplayFor(modelItem => item.Quantity)
+            @Html.ActionLink("+", "AddToCart", null, new { id = item.Id }, new { @class = "btn btn-primary btn-xs" })
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.SubTotal) ¥

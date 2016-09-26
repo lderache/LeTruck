@@ -33,5 +33,15 @@ namespace TheTruck.Web.Services
             products.Add(product);
             _session[_sessionKey] = products;
         }
+
+        public void RemoveProduct(int product)
+        {
+            var products = _session[_sessionKey] as List<int>;
+            if (products != null)
+            {
+                products.Remove(product);
+                _session[_sessionKey] = products;
+            }
+        }
     }
 }

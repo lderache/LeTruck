@@ -42,6 +42,7 @@ namespace TheTruck.Web.Controllers
 
                 cart.Add(new CartViewModel
                 {
+                    Id = p.Id,
                     Category = p.Category,
                     Image = p.Image,
                     Name = p.Name,
@@ -54,6 +55,17 @@ namespace TheTruck.Web.Controllers
             return View(cart);
         }
 
+        public ActionResult RmFromCart(int id)
+        {
+            cartService.RemoveProduct(id);
+            return RedirectToAction("ShowCart");
+        }
+
+        public ActionResult AddToCart(int id)
+        {
+            cartService.AddProduct(id);
+            return RedirectToAction("ShowCart");
+        }
 
 
         protected override void Dispose(bool disposing)
