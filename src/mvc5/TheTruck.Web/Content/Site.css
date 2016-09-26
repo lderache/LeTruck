@@ -31,6 +31,12 @@ textarea {
     border-color: #007dc6;
 }
 
+.btn-primary {
+    color: #ffffff;
+    background-color: #007dc6;
+    border-color: #007dc6;
+}
+
 .navbar-inverse .navbar-nav > li > a {
     color: white;
 }
