@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using TheTruck.Entities;
 using TheTruck.Web.DataContexts;
 using TheTruck.Web.Models;
 using TheTruck.Web.Services;
@@ -12,15 +14,11 @@ namespace TheTruck.Web.Controllers
         private ProductDb db = new ProductDb();
         private CartService cartService = new CartService(System.Web.HttpContext.Current.Session);
 
-        // GET: Cart
-        public ActionResult ShowCart()
+        private Dictionary<int, int> GetQuantities(List<int> ids)
         {
-            var productIds = cartService.GetProducts();
-            List<CartViewModel> cart = new List<CartViewModel>();
-
             Dictionary<int, int> quantities = new Dictionary<int, int>();
 
-            foreach (var id in productIds)
+            foreach (var id in ids)
             {
                 if (quantities.ContainsKey(id))
                 {
@@ -31,6 +29,17 @@ namespace TheTruck.Web.Controllers
                     quantities.Add(id, 1);
                 }
             }
+
+            return quantities;
+        }
+
+        // GET: Cart
+        public ActionResult ShowCart()
+        {
+            var productIds = cartService.GetProducts();
+            List<CartViewModel> cart = new List<CartViewModel>();
+
+            var quantities = GetQuantities(productIds);
 
             var products = db.Products.Where(p => productIds.Contains(p.Id));
 
@@ -67,6 +76,35 @@ namespace TheTruck.Web.Controllers
             return RedirectToAction("ShowCart");
         }
 
+        [Authorize]
+        public ActionResult ValidateCart()
+        {
+            var productIds = cartService.GetProducts();
+            var quantities = GetQuantities(productIds);
+            var orderitems = new List<OrderItem>();
+
+            var products = db.Products.Where(p => productIds.Contains(p.Id));
+
+            // populate order items
+            foreach (var p in products)
+            {
+                orderitems.Add(new OrderItem
+                {
+                    ProductId = p.Id,
+                    Quantity = quantities[p.Id],
+                    UnitPrice = p.Price,
+                });
+            }
+
+            // Create the order
+            var order = new Order { DateTime = DateTime.Now, Username = User.Identity.Name, Items = orderitems };
+
+            // Save into the database
+            db.Orders.Add(order);
+            db.SaveChanges();
+
+            return View();
+        }
 
         protected override void Dispose(bool disposing)
         {

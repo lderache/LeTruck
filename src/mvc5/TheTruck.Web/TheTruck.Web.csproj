@@ -228,6 +228,14 @@
     <Compile Include="DataContexts\ProductMigrations\201609171536420_ImageNonRequired.Designer.cs">
       <DependentUpon>201609171536420_ImageNonRequired.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataContexts\ProductMigrations\201609260643573_AddOrder.cs" />
+    <Compile Include="DataContexts\ProductMigrations\201609260643573_AddOrder.Designer.cs">
+      <DependentUpon>201609260643573_AddOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataContexts\ProductMigrations\201609260716550_LinkOrderToUsername.cs" />
+    <Compile Include="DataContexts\ProductMigrations\201609260716550_LinkOrderToUsername.Designer.cs">
+      <DependentUpon>201609260716550_LinkOrderToUsername.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataContexts\ProductMigrations\Configuration.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -312,6 +320,7 @@
     <Content Include="Views\ProductListing\Index.cshtml" />
     <Content Include="Views\Shared\_ManagePartial.cshtml" />
     <Content Include="Views\Cart\ShowCart.cshtml" />
+    <Content Include="Views\Cart\ValidateCart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -349,6 +358,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DataContexts\ProductMigrations\201609171536420_ImageNonRequired.resx">
       <DependentUpon>201609171536420_ImageNonRequired.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataContexts\ProductMigrations\201609260643573_AddOrder.resx">
+      <DependentUpon>201609260643573_AddOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataContexts\ProductMigrations\201609260716550_LinkOrderToUsername.resx">
+      <DependentUpon>201609260716550_LinkOrderToUsername.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
