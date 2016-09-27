@@ -2,18 +2,15 @@
 
 @{
     ViewBag.Title = "Index";
-    var pageSize = ViewBag.pageSize;
 
-    var totalProducts = ViewBag.numberOfProducts;
-    var nbPages = totalProducts / pageSize;
-    var nbPagesRemainder = totalProducts % pageSize;
+    var nbPages = ViewBag.numberOfProducts / ViewBag.pageSize;
+    var nbPagesRemainder = ViewBag.numberOfProducts % ViewBag.pageSize;
 
+    // if there is some remaining products add one last page
     if (nbPagesRemainder > 0)
     {
         nbPages = nbPages + 1;
     }
-
-
 }
 
 <h4 style="color: #444444; margin-top: 30px;">Click the link on the right of each product to receive it in the next Truck.</h4>
@@ -21,7 +18,7 @@
 <ul class="pagination pagination-lg">
     @for (int i = 0; i < nbPages; i++)
     {
-        <li>@Html.ActionLink((i+1).ToString(), "Search", new { startIndex = (pageSize * i) }, new { @class = (i == ViewBag.currentPage ? "active": "") }) </li>
+        <li>@Html.ActionLink((i+1).ToString(), "Search", new { startIndex = (ViewBag.pageSize * i) }, new { @class = (i == ViewBag.currentPage ? "active": "") }) </li>
     }
 </ul>
 
