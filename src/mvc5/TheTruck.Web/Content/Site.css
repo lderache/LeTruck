@@ -61,6 +61,7 @@ h6,
 .h5,
 .h6 {
   font-family: "Merriweather Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  
 }
 
 .badge {
@@ -85,4 +86,19 @@ h6,
 ul.pagination li a.active {
     background-color:#007dc6;
     color:white;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  color:#007dc6;
 }
