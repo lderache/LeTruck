@@ -4,10 +4,12 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using System;
+using System.Configuration;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using TheTruck.Web.DataContexts;
 using TheTruck.Web.Models;
+using TheTruck.Web.Services;
 
 namespace TheTruck.Web
 {
@@ -15,7 +17,18 @@ namespace TheTruck.Web
     {
         public Task SendAsync(IdentityMessage message)
         {
-            // Plug in your email service here to send an email.
+            return ValidateEmailAsync(message);
+        }
+
+        private Task ValidateEmailAsync(IdentityMessage message)
+        {
+
+            Mailer mailer = new Mailer(
+                ConfigurationManager.AppSettings["smtpUsername"],
+                ConfigurationManager.AppSettings["smtpPassword"]);
+
+            mailer.SendMail(message.Destination, message.Subject, message.Body);
+
             return Task.FromResult(0);
         }
     }
