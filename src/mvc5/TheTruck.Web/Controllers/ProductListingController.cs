@@ -18,7 +18,7 @@ namespace TheTruck.Web.Controllers
         // GET: ProductListing
         public ActionResult Index()
         {
-            return View(db.Products.ToList());
+            return RedirectToAction("Search", new { startIndex = 0 });
         }
 
         // GET: Products/AddToCart/5
@@ -35,6 +35,19 @@ namespace TheTruck.Web.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult Search(int startIndex)
+        {
+            int pageSize = 5;
+
+            var products = db.Products.OrderBy(x => x.Category).ThenBy(x => x.Name).Skip(startIndex).Take(pageSize);
+
+            ViewBag.numberOfProducts = db.Products.Count();
+            ViewBag.pageSize = pageSize;
+            ViewBag.currentPage = startIndex / pageSize;
+
+            return View(products);
         }
     }
 }

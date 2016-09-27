@@ -81,3 +81,8 @@ h6,
 .table {
     font-size: 20px;
 }
+
+ul.pagination li a.active {
+    background-color:#007dc6;
+    color:white;
+}
