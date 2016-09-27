@@ -18,7 +18,7 @@
 
 <h4 style="color: #444444; margin-top: 30px;">Click the link on the right of each product to receive it in the next Truck.</h4>
 
-<ul class="pagination">
+<ul class="pagination pagination-lg">
     @for (int i = 0; i < nbPages; i++)
     {
         <li>@Html.ActionLink((i+1).ToString(), "Search", new { startIndex = (pageSize * i) }, new { @class = (i == ViewBag.currentPage ? "active": "") }) </li>
