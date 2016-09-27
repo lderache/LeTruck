@@ -8,6 +8,8 @@
         Gourmet,
         Grocery,
         NonFood,
-        Pastry
+        Pastry,
+        Wine,
+        Bakery
     }
 }
