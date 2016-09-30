@@ -7,18 +7,23 @@ namespace TheTruck.Web.Services
     {
         string _sender = "";
         string _password = "";
-        public Mailer(string sender, string password)
+        string _server = "";
+        int _port = 587;
+
+        public Mailer(string sender, string password, string server, int port)
         {
             _sender = sender;
             _password = password;
+            _server = server;
+            _port = port;
         }
 
 
         public void SendMail(string recipient, string subject, string message)
         {
-            SmtpClient client = new SmtpClient("smtp-mail.outlook.com");
+            SmtpClient client = new SmtpClient(_server);
 
-            client.Port = 587;
+            client.Port = _port;
             client.DeliveryMethod = SmtpDeliveryMethod.Network;
             client.UseDefaultCredentials = false;
             System.Net.NetworkCredential credentials = new System.Net.NetworkCredential(_sender, _password);

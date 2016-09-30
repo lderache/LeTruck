@@ -25,7 +25,9 @@ namespace TheTruck.Web
 
             Mailer mailer = new Mailer(
                 ConfigurationManager.AppSettings["smtpUsername"],
-                ConfigurationManager.AppSettings["smtpPassword"]);
+                ConfigurationManager.AppSettings["smtpPassword"],
+                ConfigurationManager.AppSettings["smtpServer"],
+                int.Parse(ConfigurationManager.AppSettings["smtpServerPort"]));
 
             mailer.SendMail(message.Destination, message.Subject, message.Body);
 

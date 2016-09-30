@@ -280,6 +280,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="AppPasswords.config" />
+    <Content Include="AppPasswords_demo.config" />
     <None Include="Properties\PublishProfiles\smarterasp.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
