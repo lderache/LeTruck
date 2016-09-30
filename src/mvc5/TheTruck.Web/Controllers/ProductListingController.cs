@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Configuration;
+using System.Linq;
 using System.Web.Mvc;
 using TheTruck.Web.DataContexts;
 using TheTruck.Web.Services;
@@ -39,7 +40,7 @@ namespace TheTruck.Web.Controllers
 
         public ActionResult Search(int startIndex)
         {
-            int pageSize = 5;
+            int pageSize = int.Parse(ConfigurationManager.AppSettings["productPerPage"]);
 
             var products = db.Products.OrderBy(x => x.Category).ThenBy(x => x.Name).Skip(startIndex).Take(pageSize);
 
