@@ -262,6 +262,16 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\01cba0a5-d1ff-4323-a015-bbd0ea8bde10.JPG" />
+    <Content Include="images\33205b1b-dec5-4416-b026-ac19f2f90385.JPG" />
+    <Content Include="images\625323c4-b892-405c-bed3-affcbcf359d4.JPG" />
+    <Content Include="images\84c3140b-2386-4a8b-9bf2-82c247125131.JPG" />
+    <Content Include="images\banniere-le-truck.jpg" />
+    <Content Include="images\brie-fermier.png" />
+    <Content Include="images\brie-milkana.png" />
+    <Content Include="images\camembert.png" />
+    <Content Include="images\coeur-de-lion.png" />
+    <Content Include="images\letruck_logo.png" />
     <Content Include="Scripts\ai.0.22.19-build00125.js" />
     <Content Include="Scripts\ai.0.22.19-build00125.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -270,6 +280,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="AppPasswords.config" />
+    <None Include="Properties\PublishProfiles\smarterasp.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
