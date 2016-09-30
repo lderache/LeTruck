@@ -3,6 +3,7 @@ namespace TheTruck.Web.DataContexts.IdentityMigrations
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
     using Models;
+    using System.Configuration;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
@@ -16,8 +17,10 @@ namespace TheTruck.Web.DataContexts.IdentityMigrations
 
         protected override void Seed(TheTruck.Web.DataContexts.IdentityDb context)
         {
+            var adminEmail = ConfigurationManager.AppSettings["adminEmail"];
+            var adminPassword = ConfigurationManager.AppSettings["adminPassword"];
 
-            if (!context.Users.Any(u => u.UserName == "laurent.derache@gmail.com"))
+            if (!context.Users.Any(u => u.UserName == adminEmail))
             {
                 // Roles
                 var roleStore = new RoleStore<IdentityRole>(context);
@@ -28,8 +31,8 @@ namespace TheTruck.Web.DataContexts.IdentityMigrations
                 // Admin user
                 var userStore = new UserStore<ApplicationUser>(context);
                 var userManager = new UserManager<ApplicationUser>(userStore);
-                var user = new ApplicationUser { UserName = "laurent.derache@gmail.com" };
-                userManager.Create(user, "password");
+                var user = new ApplicationUser { UserName = adminEmail, EmailConfirmed = true };
+                userManager.Create(user, adminPassword);
 
                 // Add the role to admin user
                 userManager.AddToRole(user.Id, role.Name);
