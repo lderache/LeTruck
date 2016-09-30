@@ -102,3 +102,7 @@ h6,
 .h6 {
   color:#007dc6;
 }
+
+p {
+    margin: 20px 0 20px;
+}
