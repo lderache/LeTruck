@@ -107,12 +107,12 @@ namespace TheTruck.Web.Controllers
 
             var isFirstOrder = db.Orders.Where(o => o.Username == User.Identity.Name).Count() > 1 ? false : true;
 
-            //if (isFirstOrder)
-            //    return View("Survey");
-
-            //return View();
-            return View("Survey");
-
+            if (isFirstOrder)
+                return RedirectToAction("Create", "Surveys");
+            else
+            {
+                return RedirectToAction("OrderSuccessful", "Orders");
+            }
         }
 
         protected override void Dispose(bool disposing)

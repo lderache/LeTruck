@@ -202,6 +202,7 @@
     <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\ProductListingController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\SurveysController.cs" />
     <Compile Include="DataContexts\IdentityDb.cs" />
     <Compile Include="DataContexts\IdentityMigrations\201609161418192_InitialCreate.cs" />
     <Compile Include="DataContexts\IdentityMigrations\201609161418192_InitialCreate.Designer.cs">
@@ -240,6 +241,10 @@
     <Compile Include="DataContexts\ProductMigrations\201609260758194_AddProductNameAndImage.cs" />
     <Compile Include="DataContexts\ProductMigrations\201609260758194_AddProductNameAndImage.Designer.cs">
       <DependentUpon>201609260758194_AddProductNameAndImage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataContexts\ProductMigrations\201610100819594_AddSurvey.cs" />
+    <Compile Include="DataContexts\ProductMigrations\201610100819594_AddSurvey.Designer.cs">
+      <DependentUpon>201610100819594_AddSurvey.cs</DependentUpon>
     </Compile>
     <Compile Include="DataContexts\ProductMigrations\Configuration.cs" />
     <Compile Include="Global.asax.cs">
@@ -340,7 +345,6 @@
     <Content Include="Views\ProductListing\Index.cshtml" />
     <Content Include="Views\Shared\_ManagePartial.cshtml" />
     <Content Include="Views\Cart\ShowCart.cshtml" />
-    <Content Include="Views\Cart\ValidateCart.cshtml" />
     <Content Include="Views\Orders\Create.cshtml" />
     <Content Include="Views\Orders\Delete.cshtml" />
     <Content Include="Views\Orders\Details.cshtml" />
@@ -348,7 +352,12 @@
     <Content Include="Views\Orders\Index.cshtml" />
     <Content Include="Views\ProductListing\Search.cshtml" />
     <Content Include="Views\Account\PleaseConfirmEmail.cshtml" />
-    <Content Include="Views\Cart\Survey.cshtml" />
+    <Content Include="Views\Surveys\Create.cshtml" />
+    <Content Include="Views\Surveys\Delete.cshtml" />
+    <Content Include="Views\Surveys\Details.cshtml" />
+    <Content Include="Views\Surveys\Edit.cshtml" />
+    <Content Include="Views\Surveys\Index.cshtml" />
+    <Content Include="Views\Orders\OrderSuccessful.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -394,6 +403,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DataContexts\ProductMigrations\201609260758194_AddProductNameAndImage.resx">
       <DependentUpon>201609260758194_AddProductNameAndImage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataContexts\ProductMigrations\201610100819594_AddSurvey.resx">
+      <DependentUpon>201610100819594_AddSurvey.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

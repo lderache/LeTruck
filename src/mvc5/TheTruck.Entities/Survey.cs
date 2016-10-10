@@ -30,10 +30,15 @@ namespace TheTruck.Entities
 
     public class Survey
     {
+        public int Id { get; set; }
+        public String Username { get; set; }
+
         [DisplayName("How often would you like to order ?")]
         public BuyFrequency OrderFrequency { get; set; }
+
         [DisplayName("How long time will you stay in Taishan ?")]
         public StayPeriod StayPeriod { get; set; }
+
         [DisplayName("We would love to hear your feedback, please let us know your thought")]
         public String Comment { get; set; }
     }
