@@ -39,7 +39,7 @@ namespace TheTruck.Web.Controllers
         }
 
         // GET: Surveys/Create
-        [Authorize(Roles = "admin")]
+        [Authorize]
         public ActionResult Create()
         {
             return View();

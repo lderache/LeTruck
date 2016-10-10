@@ -11,23 +11,26 @@ using TheTruck.Web.DataContexts;
 
 namespace TheTruck.Web.Controllers
 {
-    [Authorize(Roles = "admin")]
+
     public class OrdersController : Controller
     {
         private ProductDb db = new ProductDb();
 
+        [Authorize]
         public ActionResult OrderSuccessful()
         {
             return View();
         }
 
         // GET: Orders
+        [Authorize(Roles = "admin")]
         public ActionResult Index()
         {
             return View(db.Orders.ToList());
         }
 
         // GET: Orders/Details/5
+        [Authorize(Roles = "admin")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -44,6 +47,7 @@ namespace TheTruck.Web.Controllers
         }
 
         // GET: Orders/Create
+        [Authorize(Roles = "admin")]
         public ActionResult Create()
         {
             return View();
@@ -52,6 +56,7 @@ namespace TheTruck.Web.Controllers
         // POST: Orders/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,DateTime,Username")] Order order)
@@ -67,6 +72,7 @@ namespace TheTruck.Web.Controllers
         }
 
         // GET: Orders/Edit/5
+        [Authorize(Roles = "admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -84,6 +90,7 @@ namespace TheTruck.Web.Controllers
         // POST: Orders/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,DateTime,Username")] Order order)
@@ -98,6 +105,7 @@ namespace TheTruck.Web.Controllers
         }
 
         // GET: Orders/Delete/5
+        [Authorize(Roles = "admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -113,6 +121,7 @@ namespace TheTruck.Web.Controllers
         }
 
         // POST: Orders/Delete/5
+        [Authorize(Roles = "admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

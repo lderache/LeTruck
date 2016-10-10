@@ -17,6 +17,7 @@ namespace TheTruck.Web.DataContexts.IdentityMigrations
 
         protected override void Seed(TheTruck.Web.DataContexts.IdentityDb context)
         {
+            // ADMIN
             var adminEmail = ConfigurationManager.AppSettings["adminEmail"];
             var adminPassword = ConfigurationManager.AppSettings["adminPassword"];
 
@@ -31,11 +32,24 @@ namespace TheTruck.Web.DataContexts.IdentityMigrations
                 // Admin user
                 var userStore = new UserStore<ApplicationUser>(context);
                 var userManager = new UserManager<ApplicationUser>(userStore);
-                var user = new ApplicationUser { UserName = adminEmail, EmailConfirmed = true };
-                userManager.Create(user, adminPassword);
+                var administrator = new ApplicationUser { UserName = adminEmail, EmailConfirmed = true };
+                userManager.Create(administrator, adminPassword);
 
                 // Add the role to admin user
-                userManager.AddToRole(user.Id, role.Name);
+                userManager.AddToRole(administrator.Id, role.Name);
+            }
+
+            var userEmail = ConfigurationManager.AppSettings["userEmail"];
+            var userPassword = ConfigurationManager.AppSettings["userPassword"];
+
+            // USER
+            if (!context.Users.Any(u => u.UserName == userEmail))
+            {
+                var userStore = new UserStore<ApplicationUser>(context);
+                var userManager = new UserManager<ApplicationUser>(userStore);
+
+                var user = new ApplicationUser { UserName = userEmail, EmailConfirmed = true };
+                userManager.Create(user, userPassword);
             }
         }
     }
