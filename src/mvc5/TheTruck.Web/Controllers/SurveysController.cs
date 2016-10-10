@@ -11,18 +11,19 @@ using TheTruck.Web.DataContexts;
 
 namespace TheTruck.Web.Controllers
 {
-    [Authorize]
     public class SurveysController : Controller
     {
         private ProductDb db = new ProductDb();
 
         // GET: Surveys
+        [Authorize(Roles = "admin")]
         public ActionResult Index()
         {
             return View(db.Surveys.ToList());
         }
 
         // GET: Surveys/Details/5
+        [Authorize(Roles = "admin")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -38,6 +39,7 @@ namespace TheTruck.Web.Controllers
         }
 
         // GET: Surveys/Create
+        [Authorize(Roles = "admin")]
         public ActionResult Create()
         {
             return View();
@@ -48,6 +50,7 @@ namespace TheTruck.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Create([Bind(Include = "Id,OrderFrequency,StayPeriod,Comment")] Survey survey)
         {
             if (ModelState.IsValid)
@@ -62,6 +65,7 @@ namespace TheTruck.Web.Controllers
         }
 
         // GET: Surveys/Edit/5
+        [Authorize(Roles = "admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -79,6 +83,7 @@ namespace TheTruck.Web.Controllers
         // POST: Surveys/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Username,OrderFrequency,StayPeriod,Comment")] Survey survey)
@@ -93,6 +98,7 @@ namespace TheTruck.Web.Controllers
         }
 
         // GET: Surveys/Delete/5
+        [Authorize(Roles = "admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -108,6 +114,7 @@ namespace TheTruck.Web.Controllers
         }
 
         // POST: Surveys/Delete/5
+        [Authorize(Roles = "admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
