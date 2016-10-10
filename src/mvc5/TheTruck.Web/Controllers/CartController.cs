@@ -105,7 +105,14 @@ namespace TheTruck.Web.Controllers
             db.Orders.Add(order);
             db.SaveChanges();
 
-            return View();
+            var isFirstOrder = db.Orders.Where(o => o.Username == User.Identity.Name).Count() > 1 ? false : true;
+
+            //if (isFirstOrder)
+            //    return View("Survey");
+
+            //return View();
+            return View("Survey");
+
         }
 
         protected override void Dispose(bool disposing)

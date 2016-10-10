@@ -348,6 +348,7 @@
     <Content Include="Views\Orders\Index.cshtml" />
     <Content Include="Views\ProductListing\Search.cshtml" />
     <Content Include="Views\Account\PleaseConfirmEmail.cshtml" />
+    <Content Include="Views\Cart\Survey.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
