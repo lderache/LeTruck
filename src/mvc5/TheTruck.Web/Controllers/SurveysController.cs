@@ -58,7 +58,7 @@ namespace TheTruck.Web.Controllers
                 survey.Username = User.Identity.Name;
                 db.Surveys.Add(survey);
                 db.SaveChanges();
-                return RedirectToAction("OrderSuccessful", "Orders");
+                return RedirectToAction("ValidateCart", "Cart");
             }
 
             return View(survey);

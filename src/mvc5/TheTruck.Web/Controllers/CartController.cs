@@ -79,6 +79,14 @@ namespace TheTruck.Web.Controllers
         [Authorize]
         public ActionResult ValidateCart()
         {
+            // First check if it is the first order
+            var isFirstOrder = db.Surveys.Where(s => s.Username == User.Identity.Name).Count() > 0 ? false : true;
+
+            // If first order force fill in the survey
+            if (isFirstOrder)
+                return RedirectToAction("Create", "Surveys");
+
+
             var productIds = cartService.GetProducts();
             var quantities = GetQuantities(productIds);
             var orderitems = new List<OrderItem>();
@@ -105,14 +113,8 @@ namespace TheTruck.Web.Controllers
             db.Orders.Add(order);
             db.SaveChanges();
 
-            var isFirstOrder = db.Orders.Where(o => o.Username == User.Identity.Name).Count() > 1 ? false : true;
+            return RedirectToAction("OrderSuccessful", "Orders");
 
-            if (isFirstOrder)
-                return RedirectToAction("Create", "Surveys");
-            else
-            {
-                return RedirectToAction("OrderSuccessful", "Orders");
-            }
         }
 
         protected override void Dispose(bool disposing)
