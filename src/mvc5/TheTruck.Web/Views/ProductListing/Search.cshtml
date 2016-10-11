@@ -22,7 +22,7 @@
     }
 </ul>
 
-<table class="table table-condensed table-responsive">
+<table class="table table-condensed table-responsive" id="listing">
     <thead>
         <tr>
             <th>
@@ -42,7 +42,8 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Name) - @Html.DisplayFor(modelItem => item.Description)
+                    @Html.DisplayFor(modelItem => item.Name)
+                    @Html.DisplayFor(modelItem => item.Description)
                 </td>
                 <td class="price">
                     <strong>@Html.DisplayFor(modelItem => item.Price) ¥</strong>

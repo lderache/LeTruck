@@ -106,3 +106,7 @@ h6,
 p {
     margin: 20px 0 20px;
 }
+
+#listing tr td:nth-child(1){
+    width:50%;
+}
