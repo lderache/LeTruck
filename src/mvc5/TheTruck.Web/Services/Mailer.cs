@@ -35,6 +35,7 @@ namespace TheTruck.Web.Services
                 var mail = new MailMessage(_sender.Trim(), recipient.Trim());
                 mail.Subject = subject;
                 mail.Body = message;
+                mail.IsBodyHtml = true;
                 client.Send(mail);
             }
             catch (Exception ex)
