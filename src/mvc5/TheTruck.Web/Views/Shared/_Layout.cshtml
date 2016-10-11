@@ -19,9 +19,9 @@
                     <span class="icon-bar"></span>
                 </button>
                 @Html.ActionLink("Le Truck", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                @Html.Partial("_CartPartial")
             </div>
             <div class="navbar-collapse collapse">
+                @Html.Partial("_CartPartial")
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Listings", "Index", "ProductListing")</li>
                     <li>@Html.Partial("_ManagePartial")</li>
